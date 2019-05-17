@@ -32,7 +32,6 @@ public class Graph {
         {
             arrayOfVertices[i] = new Vertex(i);
             arrayOfVertices[i].setKey(Integer.MAX_VALUE);
-            arrayOfVertices[i].setParent(null);
         }
 
         arrayOfVertices[root].setKey(0);
@@ -72,7 +71,6 @@ public class Graph {
         for(int i=0; i<numberOfVertices; i++)
         {
             arrayOfVertices[i] = new Vertex(i);
-            arrayOfVertices[i].setParent(null);
             arrayOfVertices[i].setKey(Integer.MAX_VALUE);
         }
 
