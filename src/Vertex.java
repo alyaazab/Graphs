@@ -4,7 +4,6 @@ public class Vertex implements Comparable<Vertex> {
     private int weight;
     private int key;
     private Vertex parent;
-    private String label;
 
     public Vertex(int index) {
         this.index = index;
@@ -13,14 +12,6 @@ public class Vertex implements Comparable<Vertex> {
     public Vertex(int index, int weight) {
         this.index = index;
         this.weight = weight;
-    }
-
-    public int getValue() {
-        return weight;
-    }
-
-    public void setValue(int value) {
-        this.weight = value;
     }
 
     public int getIndex() {

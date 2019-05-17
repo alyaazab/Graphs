@@ -19,7 +19,7 @@ public class Main {
         graph.addEdge(5,6,2);
         graph.generatePrimsMST(0);
 
-//
+
 //        Graph graph = new Graph(5, true);
 //        graph.addEdge(0, 1, 10);
 //        graph.addEdge(0, 4, 5);
@@ -32,7 +32,7 @@ public class Main {
 //        graph.addEdge(4, 2, 9);
 //        graph.addEdge(4, 1, 3);
 //        graph.printGraph();
-
+//
 //        graph.findShortestPaths(0);
 
 
