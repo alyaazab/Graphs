@@ -13,7 +13,7 @@ public class Graph {
 
 
 
-    public Graph(int numberOfVertices, boolean directed) {
+    Graph(int numberOfVertices, boolean directed) {
         this.directed = directed;
         this.numberOfVertices = numberOfVertices;
         arrayOfVertices = new Vertex[numberOfVertices];
@@ -26,7 +26,7 @@ public class Graph {
         }
     }
 
-    public void generatePrimsMST(int root) {
+    void generatePrimsMST(int root) {
 
         for(int i=0; i<numberOfVertices; i++)
         {
@@ -93,7 +93,7 @@ public class Graph {
 
     }
 
-    public void printShortestPaths(int sourceIndex) {
+    private void printShortestPaths(int sourceIndex) {
 
         Stack stack = new Stack();
         int destinationIndex;
@@ -144,7 +144,7 @@ public class Graph {
         }
     }
 
-    public void addEdge(int indexU, int indexV, int weight) {
+    void addEdge(int indexU, int indexV, int weight) {
 
         adjacencyList[indexU].add(new Vertex(indexV, weight));
 
@@ -177,17 +177,16 @@ public class Graph {
         }
     }
 
-    public void printListOfEdges() {
+    private void printListOfEdges() {
 
         System.out.println("Printing Prim's Minimum Spanning Tree (Root = 0)\n");
 
-        for(int i=0; i<listOfEdges.size(); i++)
-        {
-            System.out.println(listOfEdges.get(i).toString());
+        for (Edge listOfEdge : listOfEdges) {
+            System.out.println(listOfEdge.toString());
         }
     }
 
-    public boolean isDirected() {
+    private boolean isDirected() {
         return directed;
     }
 
