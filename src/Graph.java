@@ -26,7 +26,7 @@ public class Graph {
         }
     }
 
-    void generatePrimsMST(int root) {
+    public void generatePrimsMST(int root) {
 
         for(int i=0; i<numberOfVertices; i++)
         {
@@ -73,7 +73,6 @@ public class Graph {
             arrayOfVertices[i] = new Vertex(i);
             arrayOfVertices[i].setKey(Integer.MAX_VALUE);
         }
-
         arrayOfVertices[source].setKey(0);
 
         PriorityQueue<Vertex> queue = new PriorityQueue<>(numberOfVertices);
@@ -86,11 +85,13 @@ public class Graph {
             set.add(u);
 
             for(Vertex neighbour : adjacencyList[u.getIndex()])
-                relax(u, neighbour, queue);
+            {
+                arrayOfVertices[neighbour.getIndex()].setWeight(neighbour.getWeight());
+                relax(arrayOfVertices[u.getIndex()], arrayOfVertices[neighbour.getIndex()], queue);
+            }
         }
 
         printShortestPaths(source);
-
     }
 
     private void printShortestPaths(int sourceIndex) {
@@ -126,25 +127,23 @@ public class Graph {
 
                 }
             }
-            System.out.println("\nTotal Distance = " + key);
+            System.out.println("\nTotal Distance = " + key + "\n");
         }
     }
 
     private void relax(Vertex u, Vertex neighbour, PriorityQueue queue) {
 
-        if(arrayOfVertices[u.getIndex()].getKey() + neighbour.getWeight() < arrayOfVertices[neighbour.getIndex()].getKey())
+        if(u.getKey() + neighbour.getWeight() < neighbour.getKey())
         {
-            arrayOfVertices[neighbour.getIndex()].setKey(arrayOfVertices[u.getIndex()].getKey() + neighbour.getWeight());
-            arrayOfVertices[neighbour.getIndex()].setParent(u);
 
             queue.remove(neighbour);
-            neighbour.setKey(arrayOfVertices[u.getIndex()].getKey() + neighbour.getWeight());
+            neighbour.setKey(u.getKey() + neighbour.getWeight());
             neighbour.setParent(u);
             queue.add(neighbour);
         }
     }
 
-    void addEdge(int indexU, int indexV, int weight) {
+    public void addEdge(int indexU, int indexV, int weight) {
 
         adjacencyList[indexU].add(new Vertex(indexV, weight));
 
@@ -177,7 +176,7 @@ public class Graph {
         }
     }
 
-    private void printListOfEdges() {
+    public void printListOfEdges() {
 
         System.out.println("Printing Prim's Minimum Spanning Tree (Root = 0)\n");
 
@@ -186,7 +185,7 @@ public class Graph {
         }
     }
 
-    private boolean isDirected() {
+    public boolean isDirected() {
         return directed;
     }
 
